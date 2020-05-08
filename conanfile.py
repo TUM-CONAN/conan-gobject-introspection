@@ -9,18 +9,16 @@ class GObjectIntrospectionConan(ConanFile):
     description = ("Middleware layer between C libraries (using GObject) and language bindings")
     license = "GPL, LGPL"
     settings = "os", "arch", "compiler", "build_type"
+    generators = "pkgconf"
 
     def build_requirements(self):
         self.build_requires("generators/1.0.0@camposs/stable")
         self.build_requires("meson/[>=0.51.2]")
-        # self.build_requires("bison/[>=3.3]@%s/stable" % self.user)
-        # self.build_requires("flex/[>=2.6.4]@%s/stable" % self.user)
+        self.build_requires("pkgconf/1.6.3@camposs/stable")
 
     def requirements(self):
-        # self.requires("python/[>=3.7.4]@camposs/stable")
-        # self.requires("python/[>=3.7.4]@camposs/stable")
-        self.requires("python_dev_config/[>=0.5]@camposs/stable")
-        
+        self.requires("python/[>=3.8.2]@camposs/stable")
+        self.requires("libffi/3.3@camposs/stable")
         self.requires("glib/2.62.0@camposs/stable")
 
     def source(self):
